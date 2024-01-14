@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
 // constants
 import 'package:demonstration_project/constants/colors.dart';
 // providers
@@ -24,7 +22,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final FirebaseAnalytics analytics = FirebaseAnalytics();
+  // final FirebaseAnalytics analytics = FirebaseAnalytics();
 
   @override
   Widget build(BuildContext context) {
@@ -36,15 +34,11 @@ class MyApp extends StatelessWidget {
         title: 'Demonstration App',
         navigatorKey: NavigationService.instance.navigationKey,
         scaffoldMessengerKey: SnackBarUtil.instance.snackBarKey,
-        navigatorObservers: [
-          FirebaseAnalyticsObserver(analytics: analytics),
-        ],
         theme: ThemeData(
           fontFamily: 'OpenSans',
           primaryColor: kColorPrimary,
           primaryColorDark: kColorDarkPrimary,
           primaryColorLight: kColorLightPrimary,
-          accentColor: kColorAccent,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         initialRoute: LoginPreload.routeName,
